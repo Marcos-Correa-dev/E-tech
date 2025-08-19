@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bem-vindos ao Curso de Banco de Dados!</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Sand and Ocean Blue -->
+    <!-- Application Structure Plan: A single-page application with a fixed sidebar for navigation and a main scrollable content area. This structure allows students to freely explore the course introduction in any order, unlike a linear slide presentation. Key interactions include smooth scrolling to sections, an interactive accordion for the course modules to reveal details on demand, and visually distinct cards for key information. This design prioritizes user-driven exploration and makes the information feel more accessible and less rigid. -->
+    <!-- Visualization & Content Choices: The core "visualization" is the interactive course content section. Report Info: Course Modules -> Goal: Organize & Show Progression -> Viz/Presentation Method: Interactive Accordion (HTML/CSS/JS) -> Interaction: Click to expand/collapse module details. Justification: An accordion is more engaging than a static list, allowing students to focus on one module at a time while still seeing the overall structure. It visually represents the course's organization without needing a data chart, which would be inappropriate for this qualitative content. Other information is presented in clean, readable cards with icons for quick visual association. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FDFBF8; /* Warm Sand */
+            color: #333333;
+        }
+        .sidebar-link {
+            transition: all 0.2s ease-in-out;
+            border-left: 3px solid transparent;
+        }
+        .sidebar-link.active, .sidebar-link:hover {
+            background-color: #E6F7FF; /* Light Ocean Blue */
+            border-left-color: #007A9D; /* Ocean Blue */
+            color: #005F79;
+            transform: translateX(4px);
+        }
+        .content-section {
+            display: none;
+        }
+        .content-section.active {
+            display: block;
+        }
+        .module-accordion-button {
+            transition: background-color 0.2s ease-in-out;
+        }
+        .module-accordion-button.open {
+            background-color: #E6F7FF;
+        }
+        .module-accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+    </style>
+</head>
+<body class="flex flex-col md:flex-row">
+
+<aside class="w-full md:w-64 bg-white md:h-screen md:sticky md:top-0 p-6 shadow-md z-10">
+    <h1 class="text-2xl font-bold text-[#005F79] mb-8">Curso de BD</h1>
+    <nav>
+        <ul class="space-y-2">
+            <li><a href="#boas-vindas" class="sidebar-link block font-medium p-3 rounded-r-lg">Boas-Vindas</a></li>
+            <li><a href="#professor" class="sidebar-link block font-medium p-3 rounded-r-lg">O Professor</a></li>
+            <li><a href="#importancia" class="sidebar-link block font-medium p-3 rounded-r-lg">Por que Estudar?</a></li>
+            <li><a href="#conteudo" class="sidebar-link block font-medium p-3 rounded-r-lg">Conteúdo do Curso</a></li>
+            <li><a href="#dinamica" class="sidebar-link block font-medium p-3 rounded-r-lg">Dinâmica das Aulas</a></li>
+            <li><a href="#regras" class="sidebar-link block font-medium p-3 rounded-r-lg">Nossas Regras</a></li>
+        </ul>
+    </nav>
+</aside>
+
+<main class="flex-1 p-6 md:p-10">
+    <div class="max-w-4xl mx-auto">
+
+        <section id="boas-vindas" class="min-h-screen pt-16">
+            <h2 class="text-4xl md:text-5xl font-bold text-[#007A9D] mb-4">Bem-vindos ao curso de Banco de Dados!</h2>
+            <p class="text-xl text-gray-600 mb-8">Uma jornada para dominar a arte de organizar e manipular dados.</p>
+            <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-200">
+                <p class="text-lg leading-relaxed">Olá a todos! É um prazer imenso ter vocês aqui para começarmos esta jornada juntos. Meu nome é <span class="font-semibold text-[#005F79]">Marcos Corrêa</span>, e serei o professor e guia de vocês ao longo deste curso. Meu objetivo é tornar o aprendizado sobre bancos de dados uma experiência prática, interessante e, acima de tudo, valiosa para a carreira de cada um.</p>
+            </div>
+        </section>
+
+        <section id="professor" class="min-h-screen pt-16">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8">Quem Sou Eu? Conheça o Professor</h2>
+            <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-200">
+                <p class="text-lg mb-6">Nesta seção, quero me apresentar um pouco melhor. Acredito que conhecer a bagagem de quem ensina ajuda a criar uma conexão e a entender a perspectiva que trarei para as aulas.</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                    <div class="bg-[#FDFBF8] p-6 rounded-lg">
+                        <div class="text-4xl font-bold text-[#007A9D]">28</div>
+                        <div class="text-md text-gray-600 mt-1">Anos</div>
+                    </div>
+                    <div class="bg-[#FDFBF8] p-6 rounded-lg">
+                        <div class="text-4xl font-bold text-[#007A9D]">8+</div>
+                        <div class="text-md text-gray-600 mt-1">Anos de Experiência</div>
+                    </div>
+                    <div class="bg-[#FDFBF8] p-6 rounded-lg">
+                        <div class="text-4xl font-bold text-[#007A9D]">💻</div>
+                        <div class="text-md text-gray-600 mt-1">Desenvolvedor de Software</div>
+                    </div>
+                </div>
+                <div class="mt-6 pt-6 border-t border-gray-200">
+                    <h3 class="font-semibold text-lg text-gray-700 mb-2">Especialidades e Objetivo</h3>
+                    <p class="text-gray-600">Minha carreira é focada em desenvolvimento de software, com uma paixão especial por bancos de dados. Atuo em modelagem, administração e, principalmente, otimização de sistemas para garantir performance e escalabilidade. Meu maior objetivo aqui é compartilhar essa experiência prática e ajudar vocês a dominarem este tema, transformando teoria em habilidade real.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="importancia" class="min-h-screen pt-16">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8">Por que Estudar Banco de Dados?</h2>
+            <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-200">
+                <p class="text-lg mb-8">Você pode se perguntar por que dedicamos um curso inteiro a este tópico. A resposta é simples: os dados são a espinha dorsal da tecnologia moderna. Entender como gerenciá-los é uma habilidade essencial e poderosa.</p>
+                <div class="space-y-6">
+                    <div class="flex items-start space-x-4">
+                        <div class="text-2xl mt-1">⛽</div>
+                        <div>
+                            <h3 class="font-semibold text-lg text-gray-700">O "Novo Petróleo"</h3>
+                            <p class="text-gray-600">Os dados são o ativo mais valioso do século 21. Empresas de todos os tamanhos dependem deles para tomar decisões, inovar e crescer.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-4">
+                        <div class="text-2xl mt-1">📱</div>
+                        <div>
+                            <h3 class="font-semibold text-lg text-gray-700">Onipresente na Tecnologia</h3>
+                            <p class="text-gray-600">Toda aplicação, site ou sistema que você usa, desde redes sociais até apps de banco, depende de um banco de dados para funcionar.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-4">
+                        <div class="text-2xl mt-1">🚀</div>
+                        <div>
+                            <h3 class="font-semibold text-lg text-gray-700">Habilidade de Alto Valor</h3>
+                            <p class="text-gray-600">Profissionais que dominam bancos de dados são extremamente valorizados no mercado, abrindo portas para diversas oportunidades de carreira.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="conteudo" class="min-h-screen pt-16">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8">O Que Vamos Aprender?</h2>
+            <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-200">
+                <p class="text-lg mb-8">Este curso foi estruturado em módulos para construir seu conhecimento de forma gradual e sólida. Aqui está o nosso mapa da jornada. Clique em cada módulo para ver os detalhes.</p>
+                <div id="modules-accordion" class="space-y-3">
+                    <div class="module-container border border-gray-200 rounded-lg">
+                        <button class="module-accordion-button w-full text-left p-4 font-semibold text-lg text-gray-700 flex justify-between items-center rounded-t-lg hover:bg-gray-50">
+                            <span>Módulo 1: Conceitos Fundamentais</span>
+                            <span class="arrow text-[#007A9D] transform">▼</span>
+                        </button>
+                        <div class="module-accordion-content px-4 pb-4 text-gray-600">
+                            <p>Nossa base. Vamos entender o que é um dado, uma informação, um banco de dados e conhecer os principais Sistemas Gerenciadores de Banco de Dados (SGBDs) do mercado.</p>
+                        </div>
+                    </div>
+                    <div class="module-container border border-gray-200 rounded-lg">
+                        <button class="module-accordion-button w-full text-left p-4 font-semibold text-lg text-gray-700 flex justify-between items-center rounded-t-lg hover:bg-gray-50">
+                            <span>Módulo 2: Modelagem de Dados</span>
+                            <span class="arrow text-[#007A9D] transform">▼</span>
+                        </button>
+                        <div class="module-accordion-content px-4 pb-4 text-gray-600">
+                            <p>A planta baixa do nosso sistema. Aprenderemos a desenhar a estrutura dos dados usando o Modelo Entidade-Relacionamento, entendendo conceitos cruciais como cardinalidade e normalização para criar bancos de dados eficientes e sem redundâncias.</p>
+                        </div>
+                    </div>
+                    <div class="module-container border border-gray-200 rounded-lg">
+                        <button class="module-accordion-button w-full text-left p-4 font-semibold text-lg text-gray-700 flex justify-between items-center rounded-t-lg hover:bg-gray-50">
+                            <span>Módulo 3: SQL - A Linguagem dos Dados</span>
+                            <span class="arrow text-[#007A9D] transform">▼</span>
+                        </button>
+                        <div class="module-accordion-content px-4 pb-4 text-gray-600">
+                            <p>A parte prática! Vamos aprender a "conversar" com o banco de dados usando SQL. Veremos comandos para criar e alterar estruturas (DDL), manipular dados (DML) e, o mais importante, fazer consultas complexas com filtros e agrupamentos.</p>
+                        </div>
+                    </div>
+                    <div class="module-container border border-gray-200 rounded-lg">
+                        <button class="module-accordion-button w-full text-left p-4 font-semibold text-lg text-gray-700 flex justify-between items-center rounded-t-lg hover:bg-gray-50">
+                            <span>Módulo 4: Tópicos Avançados</span>
+                            <span class="arrow text-[#007A9D] transform">▼</span>
+                        </button>
+                        <div class="module-accordion-content px-4 pb-4 text-gray-600">
+                            <p>Vamos refinar nossas habilidades com técnicas de otimização como índices, simplificar consultas com vistas (Views), automatizar tarefas com Stored Procedures e garantir a proteção dos dados com conceitos de segurança.</p>
+                        </div>
+                    </div>
+                    <div class="module-container border border-gray-200 rounded-lg">
+                        <button class="module-accordion-button w-full text-left p-4 font-semibold text-lg text-gray-700 flex justify-between items-center rounded-t-lg hover:bg-gray-50">
+                            <span>Projeto Prático Final</span>
+                            <span class="arrow text-[#007A9D] transform">▼</span>
+                        </button>
+                        <div class="module-accordion-content px-4 pb-4 text-gray-600">
+                            <p>Para consolidar tudo, desenvolveremos um projeto completo do zero. Da modelagem à implementação, vocês aplicarão todo o conhecimento adquirido para criar um banco de dados funcional para uma aplicação real.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="dinamica" class="min-h-screen pt-16">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8">Como o Curso Funciona?</h2>
+            <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-200">
+                <p class="text-lg mb-8">Nossa metodologia busca equilibrar teoria e prática para uma aprendizagem eficaz e dinâmica. Aqui está o que esperar das nossas aulas.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-[#FDFBF8] p-6 rounded-lg">
+                        <h3 class="font-semibold text-lg text-gray-700 mb-2">Aulas Teóricas e Práticas</h3>
+                        <p class="text-gray-600">Vamos começar com a explicação clara dos conceitos e, em seguida, mergulhar no código. A maior parte do tempo será "mão na massa".</p>
+                        <div class="mt-4">
+                            <h4 class="font-semibold text-sm text-gray-500 mb-1">Ferramenta:</h4>
+                            <p class="text-gray-600">A E-tech tem uma licença **Jetbrains** para todos os alunos. Iremos utilizar o **DataGrip** como nossa principal ferramenta de banco de dados.</p>
+                        </div>
+                    </div>
+                    <div class="bg-[#FDFBF8] p-6 rounded-lg">
+                        <h3 class="font-semibold text-lg text-gray-700 mb-2">Desafios e Projetos</h3>
+                        <p class="text-gray-600">Após cada tópico importante, vocês terão pequenos exercícios. Além disso, teremos projetos em grupo para simular um ambiente de trabalho real.</p>
+                    </div>
+                </div>
+
+                <div class="mt-8 pt-6 border-t border-gray-200">
+                    <h3 class="font-bold text-xl text-gray-800 mb-4">Duração e Avaliações</h3>
+                    <div class="flex items-center space-x-4 mb-4">
+                        <div class="text-2xl">⏳</div>
+                        <div>
+                            <p class="text-lg text-gray-600"><span class="font-bold text-[#007A9D]">60 horas</span> de curso, divididas em <span class="font-bold text-[#007A9D]">3 semanas</span>.</p>
+                        </div>
+                    </div>
+                    <p class="text-lg text-gray-600 mb-2">Teremos avaliações ao final de cada semana (sexta-feira) para garantir o acompanhamento do aprendizado.</p>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="p-2 bg-gray-50 rounded-lg flex items-center space-x-2">
+                            <div class="text-xl">📅</div>
+                            <div><span class="font-semibold">Avaliação 1:</span> 22/08</div>
+                        </li>
+                        <li class="p-2 bg-gray-50 rounded-lg flex items-center space-x-2">
+                            <div class="text-xl">📅</div>
+                            <div><span class="font-semibold">Avaliação 2:</span> 29/08</div>
+                        </li>
+                        <li class="p-2 bg-gray-50 rounded-lg flex items-center space-x-2">
+                            <div class="text-xl">📅</div>
+                            <div><span class="font-semibold">Avaliação Workshop:</span> 04/09 <span class="font-normal text-sm text-gray-500">(conectando API no banco de dados)</span></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="regras" class="min-h-screen pt-16">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8">Juntos na Jornada: Nossas Regras</h2>
+            <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-200">
+                <p class="text-lg mb-8">Para que nosso ambiente de aprendizado seja produtivo e positivo para todos, combinei algumas "regras de ouro" que guiarão nossa convivência.</p>
+                <div class="space-y-6">
+                    <div class="flex items-start space-x-4 p-4 rounded-lg hover:bg-gray-50">
+                        <div class="text-2xl mt-1">🙋</div>
+                        <div>
+                            <h3 class="font-semibold text-lg text-gray-700">Participe Ativamente</h3>
+                            <p class="text-gray-600">Não existe pergunta boba. Sua dúvida pode ser a mesma de um colega. Não tenha medo de perguntar, debater e compartilhar.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-4 p-4 rounded-lg hover:bg-gray-50">
+                        <div class="text-2xl mt-1">🧑‍🤝‍🧑</div>
+                        <div>
+                            <h3 class="font-semibold text-lg text-gray-700">Colabore e Ajude</h3>
+                            <p class="text-gray-600">A melhor forma de solidificar um conhecimento é ensinando. Ajude seus colegas no fórum e nos projetos. Todos crescem juntos.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-4 p-4 rounded-lg hover:bg-gray-50">
+                        <div class="text-2xl mt-1">🎉</div>
+                        <div>
+                            <h3 class="font-semibold text-lg text-gray-700">Divirta-se no Processo</h3>
+                            <p class="text-gray-600">Aprender pode e deve ser uma atividade prazerosa. Seja curioso, explore além do que é ensinado e celebre cada novo conceito aprendido.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const sidebarLinks = document.querySelectorAll('.sidebar-link');
+        const sections = document.querySelectorAll('main section');
+
+        const options = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.4
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    sidebarLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href').substring(1) === entry.target.id) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, options);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        const accordionButtons = document.querySelectorAll('.module-accordion-button');
+        accordionButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const content = button.nextElementSibling;
+                const arrow = button.querySelector('.arrow');
+
+                button.classList.toggle('open');
+
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                    arrow.style.transform = 'rotate(0deg)';
+                } else {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                    arrow.style.transform = 'rotate(180deg)';
+                }
+            });
+        });
+
+        const submitButton = document.getElementById('submit-desafio');
+        const feedbackMessage = document.getElementById('feedback-message');
+        if (submitButton) {
+            submitButton.addEventListener('click', () => {
+                feedbackMessage.classList.remove('hidden');
+                setTimeout(() => {
+                    feedbackMessage.classList.add('hidden');
+                }, 3000);
+            });
+        }
+    });
+</script>
+</body>
+</html>

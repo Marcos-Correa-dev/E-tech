@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade de Entidades e Atributos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Pale Blue and Warm Gray -->
+    <!-- Application Structure Plan: A single-page application with a fixed sidebar for navigation and a main scrollable content area. This structure provides a clear separation between navigation and content, allowing the user to switch between the questions and answers views without reloading the page. The user flow is simple: click 'Questões' to see all questions, or 'Respostas' to see all answers. The content is presented in a card-like format for readability and visual organization. -->
+    <!-- Visualization & Content Choices: The content is presented as simple text and a series of placeholder images to add visual context to each question, making the page more engaging than plain text. The main interaction is the toggle between the 'Questões' and 'Respostas' sections via the sidebar menu, which is handled with simple JavaScript. No complex data visualizations are needed as the content is primarily text-based. No SVG or Mermaid. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+</head>
+<body class="font-inter flex flex-col md:flex-row bg-[#F8FAFC]">
+
+<aside class="w-full md:w-64 bg-white md:h-screen md:sticky md:top-0 p-6 shadow-lg z-10">
+    <h1 class="text-xl font-bold text-gray-800 mb-8">Nivelamento de Conhecimento</h1>
+    <nav>
+        <ul class="space-y-2">
+            <li><a href="#" id="link-questoes" class="block font-medium p-3 rounded-lg text-gray-700 bg-gray-100 hover:bg-gray-200">Questões</a></li>
+            <li><a href="#" id="link-respostas" class="block font-medium p-3 rounded-lg text-gray-700 hover:bg-gray-200">Respostas</a></li>
+        </ul>
+    </nav>
+</aside>
+
+<main class="flex-1 p-6 md:p-10">
+    <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-8">Atividade: Entidades e Atributos</h2>
+
+        <div id="questoes-section" class="space-y-8">
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                <h3 class="text-lg font-semibold text-gray-800 mb-4">1. O que é uma Entidade no contexto de banco de dados?</h3>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                <h3 class="text-lg font-semibold text-gray-800 mb-4">2. Se a entidade é um "objeto do mundo real", qual a sua correspondência em um banco de dados relacional?</h3>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                <h3 class="text-lg font-semibold text-gray-800 mb-4">3. Dê um exemplo de uma Entidade e pelo menos dois dados que a descreveriam.</h3>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                <h3 class="text-lg font-semibold text-gray-800 mb-4">4. A entidade "Livro" pode ter um relacionamento com a entidade "Autor"? Explique por quê.</h3>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                <h3 class="text-lg font-semibold text-gray-800 mb-4">5. Na nossa dinâmica da cafeteria, qual entidade representaria o item que o cliente compra?</h3>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                <h3 class="text-lg font-semibold text-gray-800 mb-4">6. Verdadeiro ou Falso: "Em um banco de dados, todas as entidades precisam ter um nome único."</h3>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                <h3 class="text-lg font-semibold text-gray-800 mb-4">7. Por que é importante identificar as entidades antes de começar a criar as tabelas?</h3>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                <h3 class="text-lg font-semibold text-gray-800 mb-4">8. Em uma faculdade, quais poderiam ser as entidades principais? Cite três exemplos.</h3>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                <h3 class="text-lg font-semibold text-gray-800 mb-4">9. O que diferencia uma entidade de um atributo?</h3>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                <h3 class="text-lg font-semibold text-gray-800 mb-4">10. Na entidade "Funcionário", qual dado você não guardaria como um atributo, e por quê?</h3>
+            </div>
+        </div>
+
+        <div id="respostas-section" class="space-y-8 hidden">
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">1. Resposta</h3>
+                <p class="text-gray-600">Uma Entidade representa um objeto do mundo real sobre o qual queremos armazenar dados. Por exemplo, uma pessoa, um produto, um carro ou um departamento.</p>
+                <img src="https://placehold.co/600x200/B0BEC5/FFFFFF?text=Pessoas,+Produtos,+Lugares" alt="Representação de objetos do mundo real como pessoas e produtos." class="w-full rounded-md shadow-sm mt-4">
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">2. Resposta</h3>
+                <p class="text-gray-600">Uma entidade se torna uma **Tabela** em um banco de dados relacional. Cada tabela armazena dados de uma única entidade.</p>
+                <img src="https://placehold.co/600x200/B0BEC5/FFFFFF?text=Tabelas+e+Dados" alt="Representação de uma tabela de banco de dados com linhas e colunas." class="w-full rounded-md shadow-sm mt-4">
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">3. Resposta</h3>
+                <p class="text-gray-600">Entidade: **Cliente**. Dados que a descrevem: `nome` e `email`.</p>
+                <img src="https://placehold.co/600x200/B0BEC5/FFFFFF?text=Dados+do+Cliente" alt="Ilustração de dados de um cliente, como nome e e-mail." class="w-full rounded-md shadow-sm mt-4">
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">4. Resposta</h3>
+                <p class="text-gray-600">Sim, pode. Elas se relacionam porque um livro é escrito por um autor, e um autor pode escrever vários livros. O relacionamento é uma associação entre duas ou mais entidades.</p>
+                <img src="https://placehold.co/600x200/B0BEC5/FFFFFF?text=Livro+e+Autor" alt="Ilustração de um livro e um autor para representar um relacionamento." class="w-full rounded-md shadow-sm mt-4">
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">5. Resposta</h3>
+                <p class="text-gray-600">A entidade **Produto**.</p>
+                <img src="https://placehold.co/600x200/B0BEC5/FFFFFF?text=Itens+de+Produto" alt="Ícone de um copo de café para representar um produto." class="w-full rounded-md shadow-sm mt-4">
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">6. Resposta</h3>
+                <p class="text-gray-600">Verdadeiro. O nome de uma entidade (ou tabela) deve ser único para que o banco de dados possa identificá-la sem ambiguidade.</p>
+                <img src="https://placehold.co/600x200/B0BEC5/FFFFFF?text=Identidade+Única" alt="Representação visual de identidade e unicidade." class="w-full rounded-md shadow-sm mt-4">
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">7. Resposta</h3>
+                <p class="text-gray-600">É a primeira etapa da modelagem de dados. Identificar as entidades nos ajuda a organizar o pensamento e planejar a estrutura do banco de dados, garantindo que todas as informações necessárias serão armazenadas e relacionadas corretamente.</p>
+                <img src="https://placehold.co/600x200/B0BEC5/FFFFFF?text=Planejamento+e+Estrutura" alt="Ilustração de um plano ou mapa de projeto." class="w-full rounded-md shadow-sm mt-4">
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">8. Resposta</h3>
+                <p class="text-gray-600">**Aluno**, **Professor** e **Disciplina**.</p>
+                <img src="https://placehold.co/600x200/B0BEC5/FFFFFF?text=Entidades+de+Faculdade" alt="Ícones de um aluno, um professor e um livro para representar entidades de uma faculdade." class="w-full rounded-md shadow-sm mt-4">
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">9. Resposta</h3>
+                <p class="text-gray-600">Uma **entidade** é o objeto principal sobre o qual os dados são coletados (ex: `Funcionário`), enquanto um **atributo** é uma característica ou propriedade que descreve essa entidade (ex: `nome`, `salário` ou `departamento`).</p>
+                <img src="https://placehold.co/600x200/B0BEC5/FFFFFF?text=Entidade+vs.+Atributo" alt="Diagrama simples que diferencia uma entidade e seus atributos." class="w-full rounded-md shadow-sm mt-4">
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">10. Resposta</h3>
+                <p class="text-gray-600">Um bom exemplo seria a lista de todos os **departamentos** que um funcionário trabalhou. Esse tipo de informação é mais complexo e não é uma característica única do funcionário, mas sim um relacionamento com outra entidade. Ele seria representado por uma tabela de relacionamento ou uma chave estrangeira, e não um atributo simples.</p>
+                <img src="https://placehold.co/600x200/B0BEC5/FFFFFF?text=Relacionamentos+Complexos" alt="Diagrama mostrando um relacionamento entre duas tabelas." class="w-full rounded-md shadow-sm mt-4">
+            </div>
+        </div>
+    </div>
+</main>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const questoesLink = document.getElementById('link-questoes');
+        const respostasLink = document.getElementById('link-respostas');
+        const questoesSection = document.getElementById('questoes-section');
+        const respostasSection = document.getElementById('respostas-section');
+
+        questoesLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            questoesSection.classList.remove('hidden');
+            respostasSection.classList.add('hidden');
+            questoesLink.classList.add('bg-gray-100');
+            respostasLink.classList.remove('bg-gray-100');
+        });
+
+        respostasLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            respostasSection.classList.remove('hidden');
+            questoesSection.classList.add('hidden');
+            respostasLink.classList.add('bg-gray-100');
+            questoesLink.classList.remove('bg-gray-100');
+        });
+    });
+</script>
+</body>
+</html>
