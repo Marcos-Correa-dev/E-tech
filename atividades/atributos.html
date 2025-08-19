@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade de Atributos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Pale Blue and Warm Gray -->
+    <!-- Application Structure Plan: A single-page application with a fixed sidebar for navigation and a main scrollable content area. This structure provides a clear separation between navigation and content, allowing the user to switch between the questions and answers views without reloading the page. The user flow is simple: click 'Questões' to see all questions, or 'Respostas' to see all answers. The content is presented in a card-like format for readability and visual organization. -->
+    <!-- Visualization & Content Choices: The content is presented as simple text and a series of placeholder images to add visual context to each answer, making the page more engaging than plain text. The main interaction is the toggle between the 'Questões' and 'Respostas' sections via the sidebar menu, which is handled with simple JavaScript. No complex data visualizations are needed as the content is primarily text-based. No SVG or Mermaid. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+</head>
+<body class="font-inter flex flex-col md:flex-row bg-[#F8FAFC]">
+
+<aside class="w-full md:w-64 bg-white md:h-screen md:sticky md:top-0 p-6 shadow-lg z-10">
+    <h1 class="text-xl font-bold text-gray-800 mb-8">Nivelamento de Conhecimento</h1>
+    <nav>
+        <ul class="space-y-2">
+            <li><a href="#" id="link-questoes" class="block font-medium p-3 rounded-lg text-gray-700 bg-gray-100 hover:bg-gray-200">Questões</a></li>
+            <li><a href="#" id="link-respostas" class="block font-medium p-3 rounded-lg text-gray-700 hover:bg-gray-200">Respostas</a></li>
+        </ul>
+    </nav>
+</aside>
+
+<main class="flex-1 p-6 md:p-10">
+    <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-8">Atividade: Atributos</h2>
+
+        <div id="questoes-section" class="space-y-8">
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200"><h3 class="text-lg font-semibold text-gray-800">1. Qual é a principal função de um Atributo em um banco de dados?</h3></div>
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200"><h3 class="text-lg font-semibold text-gray-800">2. Se a Entidade corresponde a uma Tabela, a que corresponde o Atributo?</h3></div>
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200"><h3 class="text-lg font-semibold text-gray-800">3. O que é um Atributo Simples? Dê um exemplo.</h3></div>
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200"><h3 class="text-lg font-semibold text-gray-800">4. Diferencie um Atributo Simples de um Atributo Composto.</h3></div>
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200"><h3 class="text-lg font-semibold text-gray-800">5. O que torna um atributo uma "Super Chave"?</h3></div>
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200"><h3 class="text-lg font-semibold text-gray-800">6. Por que o CPF é um bom exemplo de Chave Alternativa?</h3></div>
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200"><h3 class="text-lg font-semibold text-gray-800">7. O que é um Atributo Multivalorado? Dê um exemplo.</h3></div>
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200"><h3 class="text-lg font-semibold text-gray-800">8. Qual a regra de conversão de um Atributo Multivalorado para o modelo do banco de dados relacional?</h3></div>
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200"><h3 class="text-lg font-semibold text-gray-800">9. Na entidade `Carro`, quais seriam alguns atributos? Cite pelo menos três.</h3></div>
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200"><h3 class="text-lg font-semibold text-gray-800">10. Por que é importante pensar nos atributos de uma entidade durante a fase de modelagem, e não só na hora de escrever o código?</h3></div>
+        </div>
+
+        <div id="respostas-section" class="space-y-8 hidden">
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">1. Resposta</h3>
+                <p class="text-gray-600">Um Atributo é uma propriedade ou característica que descreve uma entidade. Sua função principal é armazenar os dados que dão significado a essa entidade. Por exemplo, na entidade `Cliente`, o atributo `nome` armazena o nome de cada cliente.</p>
+                <img src="https://placehold.co/600x200/607D8B/FFFFFF?text=Formulário+de+Cadastro" alt="Formulário com campos para nome, idade e email." class="w-full rounded-md shadow-sm mt-4">
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">2. Resposta</h3>
+                <p class="text-gray-600">O Atributo corresponde a uma **Coluna** da tabela.</p>
+                <img src="https://placehold.co/600x200/607D8B/FFFFFF?text=Coluna+de+uma+Tabela" alt="Planilha de dados com uma coluna destacada." class="w-full rounded-md shadow-sm mt-4">
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">3. Resposta</h3>
+                <p class="text-gray-600">É um atributo que armazena um único valor e não pode ser dividido em partes menores. Exemplos incluem `idade`, `salário` ou `gênero`.</p>
+                <img src="https://placehold.co/600x200/607D8B/FFFFFF?text=Idade:+32" alt="Cartão de identificação mostrando a idade de uma pessoa." class="w-full rounded-md shadow-sm mt-4">
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">4. Resposta</h3>
+                <p class="text-gray-600">Um **Atributo Simples** não pode ser dividido. Já um **Atributo Composto** é uma representação de um agrupamento de dados que podem ser divididos. Por exemplo, `endereço` (composto) é formado por `rua`, `cidade` e `estado` (simples). No banco de dados, o atributo composto se torna vários atributos simples.</p>
+                <img src="https://placehold.co/600x200/607D8B/FFFFFF?text=Endereço:+Rua,+Cidade,+Estado" alt="Envelope com um endereço completo, mostrando suas partes." class="w-full rounded-md shadow-sm mt-4">
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">5. Resposta</h3>
+                <p class="text-gray-600">Uma Super Chave é um atributo (ou um conjunto de atributos) que define uma linha de uma entidade como **única**. Em outras palavras, ela garante que não haverá dois registros iguais na tabela.</p>
+                <img src="https://placehold.co/600x200/607D8B/FFFFFF?text=ID+Único:+12345" alt="Crachá de identificação com um número de ID único." class="w-full rounded-md shadow-sm mt-4">
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">6. Resposta</h3>
+                <p class="text-gray-600">O CPF é um bom exemplo porque também é único, mas em muitos cenários práticos, não é a melhor escolha para ser a Chave Primária por conta de possíveis regras de negócio ou performance. Ele pode ser usado para identificar um registro de forma única, mas não será a chave principal de relacionamento.</p>
+                <img src="https://placehold.co/600x200/607D8B/FFFFFF?text=CPF:+123.456.789-00" alt="Imagem de um cartão de CPF." class="w-full rounded-md shadow-sm mt-4">
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">7. Resposta</h3>
+                <p class="text-gray-600">É um atributo que pode ter vários valores para uma única entidade. Um exemplo clássico é o `telefone` de uma pessoa, que pode ter mais de um número.</p>
+                <img src="https://placehold.co/600x200/607D8B/FFFFFF?text=Telefones:+Celular,+Casa,+Trabalho" alt="Agenda de contatos mostrando múltiplos telefones para uma pessoa." class="w-full rounded-md shadow-sm mt-4">
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">8. Resposta</h3>
+                <p class="text-gray-600">Um atributo multivalorado, quando mapeado, se torna uma **nova tabela**. Essa nova tabela armazena os valores do atributo e se relaciona com a tabela original.</p>
+                <img src="https://placehold.co/600x200/607D8B/FFFFFF?text=Tabela+Cliente+->+Tabela+Telefone" alt="Diagrama mostrando a tabela Cliente se relacionando com uma nova tabela Telefone." class="w-full rounded-md shadow-sm mt-4">
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">9. Resposta</h3>
+                <p class="text-gray-600">`modelo`, `cor` e `ano`.</p>
+                <img src="https://placehold.co/600x200/607D8B/FFFFFF?text=Carro:+Modelo,+Cor,+Ano" alt="Foto de um carro com setas apontando para seu modelo, cor e ano de fabricação." class="w-full rounded-md shadow-sm mt-4">
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">10. Resposta</h3>
+                <p class="text-gray-600">A fase de modelagem garante que você identifique todos os dados necessários e defina a estrutura correta para eles, evitando a necessidade de alterações na estrutura do banco de dados (o que pode ser complexo e demorado) após o projeto já estar em andamento. É a etapa de planejamento que assegura a integridade e a qualidade dos dados.</p>
+                <img src="https://placehold.co/600x200/607D8B/FFFFFF?text=Planta+Baixa+de+um+Projeto" alt="Imagem de uma planta de arquitetura, simbolizando o planejamento." class="w-full rounded-md shadow-sm mt-4">
+            </div>
+        </div>
+    </div>
+</main>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const questoesLink = document.getElementById('link-questoes');
+        const respostasLink = document.getElementById('link-respostas');
+        const questoesSection = document.getElementById('questoes-section');
+        const respostasSection = document.getElementById('respostas-section');
+
+        questoesLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            questoesSection.classList.remove('hidden');
+            respostasSection.classList.add('hidden');
+            questoesLink.classList.add('bg-gray-100');
+            respostasLink.classList.remove('bg-gray-100');
+        });
+
+        respostasLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            respostasSection.classList.remove('hidden');
+            questoesSection.classList.add('hidden');
+            respostasLink.classList.add('bg-gray-100');
+            questoesLink.classList.remove('bg-gray-100');
+        });
+    });
+</script>
+</body>
+</html>
