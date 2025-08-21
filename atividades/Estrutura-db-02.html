@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício de Criação de Estruturas SQL</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 2rem;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #315e9e;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        h3 {
+            color: #5a82b9;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 0.5rem;
+            margin-top: 2rem;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            background: #f9f9f9;
+            margin-bottom: 8px;
+            padding: 10px;
+            border-radius: 4px;
+            border-left: 4px solid #5a82b9;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Exercícios de Criação de Estruturas SQL</h1>
+
+    <h3>Exercício 1: Sistema de Biblioteca</h3>
+    <p>Cenário: Você precisa criar um sistema para uma biblioteca municipal. Por enquanto, precisamos apenas registrar os livros.</p>
+
+    <h4>Requisitos:</h4>
+    <ul>
+        <li>Database chamado <strong>biblioteca</strong></li>
+        <li>Schema chamado <strong>acervo</strong></li>
+        <li>Sequence para gerar números únicos para os livros</li>
+        <li>Tabela de livros com:
+            <ul>
+                <li>Código do livro (número)</li>
+                <li>Título do livro (texto, máximo 200 caracteres)</li>
+                <li>Ano de publicação (número)</li>
+            </ul>
+        </li>
+        <li>Usuário do sistema chamado <strong>bibliotecario</strong></li>
+    </ul>
+</div>
+
+</body>
+</html>
