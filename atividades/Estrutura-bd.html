@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercícios de Modelagem e SQL</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Brilliant Blues -->
+    <!-- Application Structure Plan: A single-page, scrollable application presenting 10 distinct exercises. Each exercise is encapsulated in a "card" to create clear visual separation. Within each card, a two-column layout is used to present the abstract models (Conceptual, Logical) alongside the concrete implementation (SQL code), facilitating comparison. The Q&A section is interactive (accordion) to encourage active learning. This linear, card-based structure was chosen for its clarity and suitability for a classroom setting, allowing the instructor to guide students exercise by exercise. -->
+    <!-- Visualization & Content Choices: Report Info: Conceptual Models -> Goal: Organize & Inform -> Viz/Presentation Method: Styled HTML/CSS boxes and lines to represent entities and relationships. Justification: This method is clean, requires no external libraries, and clearly communicates the high-level structure. Report Info: SQL Code -> Goal: Inform & Enable Practice -> Viz/Presentation Method: Formatted code block with a "copy" button. Interaction: Click to copy. Justification: Provides the concrete implementation and allows students to easily use the code. Report Info: Q&A -> Goal: Engage & Reinforce -> Viz/Presentation Method: Interactive Accordion. Interaction: Click to reveal answer. Justification: Promotes active recall over passive reading. CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
+        }
+        .sql-code {
+            font-family: 'Fira Code', monospace;
+        }
+        .accordion-button .arrow {
+            transition: transform 0.2s ease-in-out;
+        }
+        .accordion-button.open .arrow {
+            transform: rotate(180deg);
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .entity-box {
+            position: relative;
+            width: 11rem; /* 176px */
+            border: 2px solid #0A4D68;
+            border-radius: 0.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 0.5rem;
+            text-align: center;
+            font-size: 0.875rem;
+            font-weight: 600;
+            background-color: white;
+        }
+        .entity-box .title {
+            position: absolute;
+            top: -0.75rem;
+            padding: 0 0.5rem;
+            background-color: #f0f4f8;
+            color: #0A4D68;
+            font-size: 0.75rem;
+        }
+        .entity-box .entity-name {
+            width: 100%;
+            font-size: 1.125rem;
+            margin-bottom: 0.5rem;
+            color: #088395;
+        }
+        .entity-box hr {
+            width: 100%;
+            border-top: 1px solid #0A4D68;
+            margin: 0.25rem 0;
+        }
+        .entity-box .attributes {
+            width: 100%;
+            font-size: 0.75rem;
+            color: #4A5568;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.25rem;
+        }
+        .relationship {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 1rem;
+        }
+        .relationship-diamond {
+            position: relative;
+            width: 3rem;
+            height: 3rem;
+            border: 2px solid #0A4D68;
+            transform: rotate(45deg);
+            background-color: #E0F7FA;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .relationship-diamond span {
+            transform: rotate(-45deg);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #0A4D68;
+        }
+        .relationship-line {
+            width: 2rem;
+            height: 2px;
+            background-color: #0A4D68;
+            position: relative;
+        }
+        .cardinality {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #0A4D68;
+            padding: 0 0.25rem;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+<div class="container mx-auto p-4 md:p-8 max-w-6xl">
+
+    <header class="text-center mb-12">
+        <h1 class="text-4xl md:text-5xl font-extrabold text-[#0A4D68]">Exercícios Práticos de Modelagem e SQL</h1>
+        <p class="text-lg text-[#088395] mt-2">Do Cenário à Implementação: 10 Desafios para Dominar Banco de Dados.</p>
+    </header>
+
+    <div id="exercises-container" class="space-y-12">
+        <!-- Exercícios serão injetados aqui pelo JavaScript -->
+    </div>
+</div>
+
+<script>
+    const exercises = [
+        {
+            id: 1,
+            title: "Cadastro de Clientes",
+            scenario: 'A nova loja de roupas "Fashion Tech" precisa de um sistema para registrar seus clientes. O registro deve incluir um código único para cada cliente, o nome completo, o e-mail e a data de nascimento.',
+            conceptualModel: `
+                    <div class="entity-box" style="height: 10rem;">
+                        <div class="title">Entidade</div>
+                        <div class="entity-name">Cliente</div>
+                        <hr/>
+                        <div class="attributes">
+                            <div>🔑 codigo_unico</div>
+                            <div>nome_completo</div>
+                            <div>email</div>
+                            <div>data_nascimento</div>
+                        </div>
+                    </div>`,
+            logicalModel: `
+                    <h4 class="font-bold text-lg text-[#0A4D68] mb-2">Modelo Lógico</h4>
+                    <p class="font-semibold">Tabela: <code class="text-sm">cliente</code></p>
+                    <ul class="list-disc list-inside text-gray-600 mt-2 text-sm space-y-1">
+                        <li><code class="font-semibold">id_cliente</code> (INTEGER - Chave Primária)</li>
+                        <li><code class="font-semibold">nome_completo</code> (VARCHAR(255))</li>
+                        <li><code class="font-semibold">email</code> (VARCHAR(255))</li>
+                        <li><code class="font-semibold">data_nascimento</code> (DATE)</li>
+                    </ul>`,
+            sqlCode: `CREATE TABLE cliente (\n    id_cliente SERIAL PRIMARY KEY,\n    nome_completo VARCHAR(255) NOT NULL,\n    email VARCHAR(255) NOT NULL,\n    data_nascimento DATE\n);`,
+            questions: [
+                { q: "Qual atributo do nosso modelo lógico é a chave primária?", a: "O `id_cliente`." },
+                { q: "Por que usamos `NOT NULL` nos atributos `nome_completo` e `email`?", a: "Para garantir que, ao inserir um cliente, esses campos não possam ficar vazios. São dados essenciais." }
+            ]
+        },
+        {
+            id: 2,
+            title: "Cadastro de Produtos",
+            scenario: 'A loja também precisa de um catálogo de produtos para registrar os itens que vende. Cada produto deve ter um código único, um nome, uma descrição, o preço de venda e a quantidade em estoque.',
+            conceptualModel: `
+                    <div class="entity-box" style="height: 11rem;">
+                        <div class="title">Entidade</div>
+                        <div class="entity-name">Produto</div>
+                        <hr/>
+                        <div class="attributes">
+                            <div>🔑 codigo_unico</div>
+                            <div>nome</div>
+                            <div>descricao</div>
+                            <div>preco_venda</div>
+                            <div>quantidade_em_estoque</div>
+                        </div>
+                    </div>`,
+            logicalModel: `
+                    <h4 class="font-bold text-lg text-[#0A4D68] mb-2">Modelo Lógico</h4>
+                    <p class="font-semibold">Tabela: <code class="text-sm">produto</code></p>
+                    <ul class="list-disc list-inside text-gray-600 mt-2 text-sm space-y-1">
+                        <li><code class="font-semibold">id_produto</code> (INTEGER - Chave Primária)</li>
+                        <li><code class="font-semibold">nome</code> (VARCHAR(255))</li>
+                        <li><code class="font-semibold">descricao</code> (TEXT)</li>
+                        <li><code class="font-semibold">preco_venda</code> (DECIMAL(10, 2))</li>
+                        <li><code class="font-semibold">qtd_estoque</code> (INTEGER)</li>
+                    </ul>`,
+            sqlCode: `CREATE TABLE produto (\n    id_produto SERIAL PRIMARY KEY,\n    nome VARCHAR(255) NOT NULL,\n    descricao TEXT,\n    preco_venda DECIMAL(10, 2) NOT NULL,\n    qtd_estoque INTEGER DEFAULT 0\n);`,
+            questions: [
+                { q: "Por que o tipo de dado de `preco_venda` é `DECIMAL(10, 2)`?", a: "Para armazenar valores com precisão de duas casas decimais, ideal para moedas e valores financeiros." },
+                { q: "Qual a função da `PRIMARY KEY` neste caso?", a: "Garantir que cada produto tenha um identificador único, para que não haja duplicidade de itens no catálogo." }
+            ]
+        },
+        {
+            id: 4,
+            title: "Funcionários e Departamentos (1-para-N)",
+            scenario: "O RH precisa cadastrar os funcionários, associando cada um a um único departamento. Um departamento pode ter vários funcionários.",
+            conceptualModel: `
+                    <div class="flex items-center justify-center">
+                        <div class="entity-box" style="height: 8rem;">
+                            <div class="title">Entidade</div><div class="entity-name">Funcionario</div><hr/><div class="attributes"><div>🔑 codigo_unico</div><div>nome</div></div>
+                        </div>
+                        <div class="relationship">
+                            <span class="cardinality">N</span>
+                            <div class="relationship-line"></div>
+                            <div class="relationship-diamond"><span>Pertence a</span></div>
+                            <div class="relationship-line"></div>
+                            <span class="cardinality">1</span>
+                        </div>
+                        <div class="entity-box" style="height: 8rem;">
+                            <div class="title">Entidade</div><div class="entity-name">Departamento</div><hr/><div class="attributes"><div>🔑 codigo_unico</div><div>nome</div></div>
+                        </div>
+                    </div>`,
+            logicalModel: `
+                    <h4 class="font-bold text-lg text-[#0A4D68] mb-2">Modelo Lógico</h4>
+                    <p class="font-semibold">Tabelas: <code class="text-sm">funcionario</code>, <code class="text-sm">departamento</code></p>
+                    <p class="text-sm text-gray-500 mt-1">Coluna adicionada em 'funcionario':</p>
+                    <ul class="list-disc list-inside text-gray-600 mt-2 text-sm space-y-1">
+                        <li><code class="font-semibold">id_departamento</code> (INTEGER - Chave Estrangeira)</li>
+                    </ul>`,
+            sqlCode: `CREATE TABLE funcionario (\n    id_funcionario SERIAL PRIMARY KEY,\n    nome VARCHAR(255) NOT NULL,\n    salario DECIMAL(10, 2),\n    id_departamento INTEGER,\n    FOREIGN KEY (id_departamento) REFERENCES departamento (id_departamento)\n);`,
+            questions: [
+                { q: "O que significa `FOREIGN KEY (id_departamento)`?", a: "Significa que a coluna `id_departamento` da tabela `funcionario` é uma chave estrangeira que aponta para a chave primária da tabela `departamento`." },
+                { q: "Por que a chave estrangeira foi criada na tabela `funcionario`?", a: "Porque a regra de um relacionamento 1-para-N é que a chave primária da tabela do lado '1' (`departamento`) migra para a tabela do lado 'N' (`funcionario`)." }
+            ]
+        },
+        {
+            id: 5,
+            title: "Vendas e Produtos (N-para-N)",
+            scenario: "Uma venda pode conter vários produtos, e um mesmo produto pode estar em várias vendas diferentes.",
+            conceptualModel: `
+                    <div class="flex items-center justify-center">
+                        <div class="entity-box" style="height: 7rem;"><div class="title">Entidade</div><div class="entity-name">Venda</div></div>
+                        <div class="relationship">
+                            <span class="cardinality">N</span>
+                            <div class="relationship-line"></div>
+                            <div class="relationship-diamond"><span>Inclui</span></div>
+                            <div class="relationship-line"></div>
+                            <span class="cardinality">N</span>
+                        </div>
+                        <div class="entity-box" style="height: 7rem;"><div class="title">Entidade</div><div class="entity-name">Produto</div></div>
+                    </div>`,
+            logicalModel: `
+                    <h4 class="font-bold text-lg text-[#0A4D68] mb-2">Modelo Lógico</h4>
+                    <p class="font-semibold">Nova Tabela: <code class="text-sm">venda_produto</code> (Associativa)</p>
+                    <ul class="list-disc list-inside text-gray-600 mt-2 text-sm space-y-1">
+                        <li><code class="font-semibold">id_venda</code> (Chave Estrangeira)</li>
+                        <li><code class="font-semibold">id_produto</code> (Chave Estrangeira)</li>
+                        <li>PK Composta: <code class="font-semibold">(id_venda, id_produto)</code></li>
+                    </ul>`,
+            sqlCode: `CREATE TABLE venda_produto (\n    id_venda INTEGER NOT NULL,\n    id_produto INTEGER NOT NULL,\n    PRIMARY KEY (id_venda, id_produto),\n    FOREIGN KEY (id_venda) REFERENCES venda (id_venda),\n    FOREIGN KEY (id_produto) REFERENCES produto (id_produto)\n);`,
+            questions: [
+                { q: "Por que foi necessário criar uma nova tabela?", a: "Para resolver o relacionamento N-para-N, é preciso uma tabela intermediária (associativa) para conectar as duas entidades." },
+                { q: "O que a `PRIMARY KEY (id_venda, id_produto)` faz?", a: "Ela cria uma Chave Primária Composta, garantindo que a mesma combinação de venda e produto não possa ser inserida mais de uma vez." }
+            ]
+        },
+        {
+            id: 9,
+            title: "Avaliações de Produtos (N-para-N com Atributo)",
+            scenario: "Um cliente pode avaliar vários produtos, e um produto pode ser avaliado por vários clientes. A avaliação em si tem um dado: a nota.",
+            conceptualModel: `
+                    <div class="flex items-center justify-center relative h-32">
+                        <div class="entity-box" style="height: 7rem;"><div class="title">Entidade</div><div class="entity-name">Cliente</div></div>
+                        <div class="relationship-line absolute left-44 top-1/2 w-16"></div>
+                        <div class="relationship-line absolute right-44 top-1/2 w-16"></div>
+                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                            <div class="relationship-diamond"><span>Avalia</span></div>
+                            <div class="absolute -bottom-12 left-1/2 -translate-x-1/2 w-32 text-center">
+                                <div class="w-0.5 h-4 bg-gray-400 mx-auto"></div>
+                                <div class="border border-gray-400 p-1 rounded bg-white text-xs">Atributo: nota</div>
+                            </div>
+                        </div>
+                        <div class="entity-box" style="height: 7rem;"><div class="title">Entidade</div><div class="entity-name">Produto</div></div>
+                    </div>`,
+            logicalModel: `
+                    <h4 class="font-bold text-lg text-[#0A4D68] mb-2">Modelo Lógico</h4>
+                    <p class="font-semibold">Nova Tabela: <code class="text-sm">avaliacao</code></p>
+                    <ul class="list-disc list-inside text-gray-600 mt-2 text-sm space-y-1">
+                        <li><code class="font-semibold">id_cliente</code> (PK, FK)</li>
+                        <li><code class="font-semibold">id_produto</code> (PK, FK)</li>
+                        <li><code class="font-semibold">nota</code> (INTEGER)</li>
+                    </ul>`,
+            sqlCode: `CREATE TABLE avaliacao (\n    id_cliente INTEGER NOT NULL,\n    id_produto INTEGER NOT NULL,\n    nota INTEGER NOT NULL,\n    PRIMARY KEY (id_cliente, id_produto),\n    FOREIGN KEY (id_cliente) REFERENCES cliente (id_cliente),\n    FOREIGN KEY (id_produto) REFERENCES produto (id_produto)\n);`,
+            questions: [
+                { q: "Por que a `nota` é um atributo do relacionamento e não de `Cliente` ou `Produto`?", a: "Porque a nota só existe no contexto de um cliente específico avaliando um produto específico. Ela não pertence a nenhum dos dois isoladamente." },
+                { q: "Por que a chave primária é composta?", a: "Para garantir a regra de negócio de que um cliente só pode avaliar um mesmo produto uma única vez." }
+            ]
+        }
+    ];
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const container = document.getElementById('exercises-container');
+
+        exercises.forEach(exercise => {
+            const exerciseCard = document.createElement('div');
+            exerciseCard.className = 'bg-white p-6 md:p-8 rounded-2xl shadow-lg border border-gray-200';
+
+            let questionsHtml = exercise.questions.map((item, index) => `
+                    <div class="border-t border-gray-200">
+                        <button class="accordion-button w-full text-left p-4 font-semibold text-gray-700 flex justify-between items-center hover:bg-gray-50">
+                            <span>${item.q}</span>
+                            <span class="arrow text-[#05BFDB] text-xl font-bold">▼</span>
+                        </button>
+                        <div class="accordion-content px-4 text-gray-600">
+                            <p class="pb-4">${item.a}</p>
+                        </div>
+                    </div>
+                `).join('');
+
+            exerciseCard.innerHTML = `
+                    <h2 class="text-2xl md:text-3xl font-bold text-[#0A4D68] mb-2">Exercício ${exercise.id}: ${exercise.title}</h2>
+                    <p class="text-gray-600 mb-6">${exercise.scenario}</p>
+
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h3 class="font-bold text-xl text-center text-[#0A4D68] mb-4">Modelo Conceitual</h3>
+                            <div class="p-4 rounded-lg bg-[#f0f4f8] border border-gray-300 flex justify-center items-center min-h-[12rem]">
+                                ${exercise.conceptualModel}
+                            </div>
+                        </div>
+                        <div>
+                            <div class="mb-6">
+                                ${exercise.logicalModel}
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg text-[#0A4D68] mb-2">SQL para Implementação</h4>
+                                <div class="relative">
+                                    <pre class="sql-code bg-gray-800 text-white p-4 rounded-lg text-sm overflow-x-auto"><code id="code-${exercise.id}">${exercise.sqlCode}</code></pre>
+                                    <button class="copy-btn absolute top-2 right-2 bg-gray-600 hover:bg-gray-500 text-white text-xs font-bold py-1 px-2 rounded" data-target="code-${exercise.id}">Copiar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8">
+                        <h3 class="font-bold text-xl text-[#0A4D68] mb-2">Perguntas e Respostas</h3>
+                        <div class="border border-gray-200 rounded-lg bg-white overflow-hidden">
+                            ${questionsHtml}
+                        </div>
+                    </div>
+                `;
+            container.appendChild(exerciseCard);
+        });
+
+        container.addEventListener('click', function(e) {
+            if (e.target.closest('.accordion-button')) {
+                const button = e.target.closest('.accordion-button');
+                const content = button.nextElementSibling;
+                button.classList.toggle('open');
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                } else {
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                }
+            }
+            if (e.target.classList.contains('copy-btn')) {
+                const targetId = e.target.getAttribute('data-target');
+                const codeElement = document.getElementById(targetId);
+                const code = codeElement.innerText;
+
+                const textarea = document.createElement('textarea');
+                textarea.value = code;
+                document.body.appendChild(textarea);
+                textarea.select();
+                try {
+                    document.execCommand('copy');
+                    e.target.innerText = 'Copiado!';
+                    setTimeout(() => { e.target.innerText = 'Copiar'; }, 2000);
+                } catch (err) {
+                    e.target.innerText = 'Erro!';
+                }
+                document.body.removeChild(textarea);
+            }
+        });
+    });
+</script>
+</body>
+</html>
