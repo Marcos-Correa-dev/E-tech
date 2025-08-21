@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explicando Sequence</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            background-color: #f0f2f5;
+            color: #333;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a73e8;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        h3 {
+            color: #3c4043;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #e8e8e8;
+            padding-bottom: 5px;
+        }
+
+        .block {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: #fafafa;
+            border: 1px solid #e0e0e0;
+        }
+
+        .code-block {
+            background-color: #f4f4f4;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #1a73e8;
+            font-family: 'Courier New', Courier, monospace;
+            overflow-x: auto;
+            margin-top: 15px;
+            white-space: pre-wrap;
+        }
+
+        .list-item {
+            margin-bottom: 10px;
+        }
+
+        .list-item:before {
+            content: "•";
+            color: #1a73e8;
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+
+        .list-group {
+            list-style-type: none;
+            padding-left: 25px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Explicando Sequence de forma simples</h1>
+
+    <div class="block">
+        <p>Imagine que você tem uma lista de clientes e precisa dar um número único para cada um deles. A **sequência** é como um contador automático que faz isso para você.</p>
+    </div>
+
+    <h3>Exemplo prático:</h3>
+    <ul class="list-group">
+        <li><span class="list-item">Quando você vai ao banco, pega uma senha: 001, 002, 003...</span></li>
+        <li><span class="list-item">Quando vai ao açougue do mercado: 001, 002, 003...</span></li>
+    </ul>
+    <p>Esses números nunca se repetem e sempre aumentam em 1.</p>
+
+    <h3>No nosso caso:</h3>
+    <div class="code-block">
+        <code>create sequence cadastro.incrementador start 1 increment 1;</code>
+    </div>
+
+    <h3>Vamos quebrar isso:</h3>
+    <ul class="list-group">
+        <li><span class="list-item"><strong>start 1:</strong> começa do número 1</span></li>
+        <li><span class="list-item"><strong>increment 1:</strong> vai aumentando de 1 em 1</span></li>
+    </ul>
+
+    <h3>Então:</h3>
+    <ul class="list-group">
+        <li><span class="list-item">Primeiro cliente → pega número 1</span></li>
+        <li><span class="list-item">Segundo cliente → pega número 2</span></li>
+        <li><span class="list-item">Terceiro cliente → pega número 3</span></li>
+        <li><span class="list-item">E assim por diante...</span></li>
+    </ul>
+
+    <h3>Por que usar?</h3>
+    <ul class="list-group">
+        <li><span class="list-item">Garante que cada cliente terá um número único</span></li>
+        <li><span class="list-item">Você não precisa se preocupar em qual número dar para cada cliente</span></li>
+        <li><span class="list-item">Evita números repetidos</span></li>
+        <li><span class="list-item">O banco faz isso automaticamente para você</span></li>
+    </ul>
+    <p>É como ter um funcionário dedicado só para distribuir números, mas de forma automática!</p>
+</div>
+
+</body>
+</html>
