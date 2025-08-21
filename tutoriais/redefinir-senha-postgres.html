@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorial: Recriando o Banco PostgreSQL do Zero</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 2rem;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #315e9e;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        h3 {
+            color: #5a82b9;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 0.5rem;
+            margin-top: 2rem;
+        }
+
+        pre {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-left: 4px solid #315e9e;
+            padding: 1rem;
+            overflow-x: auto;
+            border-radius: 4px;
+            font-family: 'Consolas', 'Courier New', monospace;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        ul, ol {
+            padding-left: 1.5rem;
+        }
+
+        ul li, ol li {
+            margin-bottom: 0.5rem;
+        }
+
+        strong {
+            font-weight: 700;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background-color: #ddd;
+            margin: 2rem 0;
+        }
+
+        .notes {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 1rem;
+            margin-top: 2rem;
+            border-radius: 4px;
+        }
+
+        .notes h3 {
+            color: #856404;
+            border-bottom: none;
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Tutorial: Recriando o banco PostgreSQL do zero</h1>
+
+    <h3>1. Criar Backup (Segurança)</h3>
+    <p>É fundamental criar uma cópia de segurança antes de qualquer modificação.</p>
+    <pre><code># Criar pasta de backup
+mkdir "C:\PostgreSQL_backup"
+
+# Copiar pasta data atual
+xcopy "C:\Program Files\PostgreSQL\16\data" "C:\PostgreSQL_backup\data" /E /I /H</code></pre>
+
+    <h3>2. Parar o Serviço</h3>
+    <ol>
+        <li>Abrir <code>services.msc</code></li>
+        <li>Encontrar "PostgreSQL 16"</li>
+        <li>Clicar com o botão direito → Parar</li>
+    </ol>
+
+    <h3>3. Limpar Diretório Data</h3>
+    <p>Esta ação removerá todos os dados existentes, então certifique-se de que o backup foi feito.</p>
+    <pre><code># Remover conteúdo da pasta data
+Remove-Item "C:\Program Files\PostgreSQL\16\data\*" -Recurse -Force</code></pre>
+
+    <h3>4. Inicializar Novo Cluster</h3>
+    <p>Aqui você criará uma nova instância do banco de dados e definirá a senha para o usuário <code>postgres</code>.</p>
+    <pre><code># Ir para a pasta bin do PostgreSQL
+cd "C:\Program Files\PostgreSQL\16\bin"
+
+# Executar initdb
+.\initdb.exe -D "C:\Program Files\PostgreSQL\16\data" -U postgres --encoding=UTF8 --locale=Portuguese_Brazil --pwprompt</code></pre>
+
+    <h3>5. Iniciar o Serviço</h3>
+    <ol>
+        <li>Abrir <code>services.msc</code></li>
+        <li>Encontrar "PostgreSQL 16"</li>
+        <li>Clicar com o botão direito → Iniciar</li>
+    </ol>
+
+    <h3>6. Conectar no DataGrip</h3>
+    <ol>
+        <li>Clique no <code>+</code> no Database Explorer</li>
+        <li>Selecione PostgreSQL</li>
+        <li>Configure:
+            <ul>
+                <li>Host: <code>localhost</code></li>
+                <li>Port: <code>5432</code></li>
+                <li>Database: <code>postgres</code></li>
+                <li>User: <code>postgres</code></li>
+                <li>Password: <em>senha que você definiu no passo 4</em></li>
+            </ul>
+        </li>
+        <li>Teste a conexão</li>
+        <li>Clique OK</li>
+    </ol>
+
+    <hr>
+
+    <div class="notes">
+        <h3>Observações Importantes:</h3>
+        <ul>
+            <li>Execute o <strong>PowerShell como Administrador</strong>.</li>
+            <li>Guarde bem a <strong>senha</strong> que você definir no passo 4.</li>
+            <li>Certifique-se de ter feito o <strong>backup</strong> antes de limpar a pasta data.</li>
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>
